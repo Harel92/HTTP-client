@@ -1,6 +1,5 @@
 README
 Name: Harel Madmoni
-Id: 203382080
 
 Exercise 2 - HTTP client
 
