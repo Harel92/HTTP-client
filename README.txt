@@ -1,7 +1,7 @@
 README
 Name: Harel Madmoni
 
-Exercise 2 - HTTP client
+HTTP client
 
 The program get HTTP request from the user and sends the request to the web server.
 receives the reply from the server and display it on screen.
