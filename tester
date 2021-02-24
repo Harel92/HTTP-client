@@ -1,0 +1,94 @@
+
+
+-p blabla
+-r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/post
+
+
+---------------------------Should work------------------------------------------------------
+./client http://www.ptsv2.com/t/Tal/post -r 3 addr=jerusalem tel=02-6655443 age=23 -p blabla
+./client http://www.ptsv2.com/t/Tal/post -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client -p blabla http://www.ptsv2.com/t/Tal/post -r 3 addr=jerusalem tel=02-6655443 age=23
+./client -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23 http://www.ptsv2.com/t/Tal/post
+./client -r 3 addr=jerusalem tel=02-6655443 age=23 -p blabla http://www.ptsv2.com/t/Tal/post
+./client -r 3 addr=jerusalem tel=02-6655443 age=23 http://www.ptsv2.com/t/Tal/post -p blabla
+valgrind ./client http://info.cern.ch -p a -r 7 a=b bb=cc ddd=eee ffff=gggg hhhhh=iiiii jjjjjj=kkkkkk lllllll=mmmmmmm
+valgrind ./client http://info.cern.ch -r 7 a=b bb=cc ddd=eee ffff=gggg hhhhh=iiiii jjjjjj=kkkkkk lllllll=mmmmmmm -p a
+valgrind ./client -p a -r 7 a=b bb=cc ddd=eee ffff=gggg hhhhh=iiiii jjjjjj=kkkkkk lllllll=mmmmmmm http://info.cern.ch
+valgrind ./client -p a http://info.cern.ch -r 7 a=b bb=cc ddd=eee ffff=gggg hhhhh=iiiii jjjjjj=kkkkkk lllllll=mmmmmmm
+valgrind ./client -r 7 a=b bb=cc ddd=eee ffff=gggg hhhhh=iiiii jjjjjj=kkkkkk lllllll=mmmmmmm -p a http://info.cern.ch
+valgrind ./client -r 7 a=b bb=cc ddd=eee ffff=gggg hhhhh=iiiii jjjjjj=kkkkkk lllllll=mmmmmmm http://info.cern.ch -p a
+./client http://www.ptsv2.com/t/Tal/post -r 0 -p blabla
+./client http://www.ptsv2.com/t/Tal/post -p blabla -r 0
+./client -p blabla http://www.ptsv2.com/t/Tal/post -r 0
+./client -p blabla -r 0 http://www.ptsv2.com/t/Tal/post
+./client -r 0 -p blabla http://www.ptsv2.com/t/Tal/post
+./client -r 0 http://www.ptsv2.com/t/Tal/post -p blabla
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:80/t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:80//t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:80/t//Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:80/t/Tal//post
+./client -r 1 http://=115 http://www.ptsv2.com/t/Tal/post
+./client -p httpwwwptsv2comtTalpost http://www.ptsv2.com/t/Tal/post
+
+
+
+---------------------------Usage errors-----------------------------------------------------
+./client http://www.ptsv2.com/t/Tal/post -p -p -p
+./client http://www.ptsv2.com/t/Tal/post -p -p -r
+./client http://www.ptsv2.com/t/Tal/post -p blabla -r 2 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/post -p blabla -r 2 addr=jerusalem
+./client http://www.ptsv2.com/t/Tal/post -p blabla -r 2 addr=jerusalem tel02-6655443=
+./client http://www.ptsv2.com/t/Tal/post -p blabla -r 2 =addrjerusalem tel02-6655443=
+./client http://www.ptsv2.com/t/Tal/post -p -r 2 =addrjerusalem tel02-6655443=
+./client http://www.ptsv2.com/t/Tal/post -r 2 addr=jerusalem tel=02-6655443 -p
+./client http://www.ptsv2.com/t/Tal/post -p blabla-r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/post -r blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/post -r -r 2 addr=jerusalem tel=02-6655443 -r 2 addr=jerusalem tel=02-6655443
+./client htt://www.ptsv2.com/t/Tal/post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http//www.ptsv2.com/t/Tal/post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http:/www.ptsv2.com/t/Tal/post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/post-r 3 addr=jerusalem tel=02-6655443 age=23 -p blabla
+./client http://www.ptsv2.com/t/Tal/post-p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/post -p blabla -r 3 addr=jerusalem tel=02-6655443 asf
+./client http:/www.ptsv2.com/t/Tal//post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:805d/t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:a805/t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:66a6/t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:65536/t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:65535aa/t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:6553511/t/Tal/post
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com::80/t/Tal/post
+./client http://www.ptsv2.com:/t/Tal/post 3 -r a=b a=c a=b=
+./client http://www.ptsv2.com:/t/Tal/post 3 -r =a=b a=c a=b
+./client http://www.ptsv2.com:/t/Tal/post 3 -r a=b a== a=b
+./client http://www.ptsv2.com:-80/t/Tal/post
+./client -p http://www.ptsv2.com/t/Tal/post
+./client -r http://www.ptsv2.com/t/Tal/post
+./client http://www.ptsv2.com:/t/Tal/post
+
+
+
+
+--------------------------404 Not found------------------------------------------------------
+./client http://www.ptsv2.com/t/Tal/post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/pt-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.com/t/Tal/post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+
+
+--------------------------Unknown host-------------------------------------------------------
+./client http://www.ptsv2com/t/Tal/post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://ww.ptsv2.com/t/Tal/post/-p -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsvaskjdfas.com/t/Tal/post/ -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.cm/t/Tal/postt -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+./client http://www.ptsv2.comt/Tal//post-r -p blabla -r 3 addr=jerusalem tel=02-6655443 age=23
+
+--------------------------Connection refused------------------------------------------------------
+./client http://www.ptsv2.com:850/t/Tal/post -r 3 addr=jerusalem tel=02-6655443 age=23 -p blabla
+./client http://www.ptsv2.com:850 -r 3 addr=jerusalem tel=02-6655443 age=23 -p blabla
+./client -r 3 addr=jerusalem tel=02-6655443 age=23 -p blabla http://www.ptsv2.com:850
+valgrind ./client -p blabla -r 1 a=b http://www.ptsv2.com:805/t/Tal/post
+
+
+
+
